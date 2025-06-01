@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ello Magic</title>
+  <style>
+    body {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #fafafa;
+        color: #333;
+    }
+
+    .hero {
+        background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa9abe668-b7ea-41b5-be82-f4c0579fd96b_1152x755.jpeg");
+        padding: 4rem;
+        height: 40vh;
+        background-repeat: no-repeat;
+        align-content: center;
+    }
+
+    .hero .container {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        margin-top: 0;
+        color: #ff69b4;
+    }
+
+    .hero p {
+        color: #fff;
+    }
+
+    .cta-buttons {
+        gap: 20px;
+        display: flex;
+    }
+
+    .cta-buttons .btn {
+        background: #ff69b4;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
+    .btn.outline {
+        background: transparent;
+        border: 2px solid #ff69b4;
+        color: #ff69b4;
+    }
+    .about,
+    .gallery,
+    .makers,
+    .story {
+        padding: 4rem;
+    }
+
+    .about > div, 
+    .gallery > div,
+    .makers > div, 
+    .story > div {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about > div {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .about-image {
+    flex: 1;
+    background: #ddd;
+    height: 200px;
+    }
+
+    .about-text {
+    flex: 2;
+    }
+
+    .filters {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    }
+
+    .filters button {
+    padding: 0.5rem 1rem;
+    background: #eee;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    }
+
+    .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    }
+
+    .card {
+    background: #ddd;
+    height: 150px;
+    }
+
+    .process ol {
+    list-style-position: inside;
+    padding-left: 1rem;
+    }
+
+    .maker-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    }
+
+    .maker {
+    background: #ffe0f0;
+    padding: 1rem;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    }
+
+    footer {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 2rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+        <h1>Building Your Imagination with Ello</h1>
+        <p>The building system that turned dreams into reality—one bead, panel, and sparkle at a time.</p>
+        <div class="cta-buttons">
+        <a href="#gallery" class="btn">LEARN MORE</a>
+        <a href="#story" class="btn outline">WHY IT MATTERED</a>
+        </div>
+    </div>
+  </header>
+
+  <section class="about">
+    <div>
+        <div class="about-image"></div>
+        <div class="about-text">
+        <h2>What Was Ello?</h2>
+        <p>Ello was a craft-construction hybrid toy designed to inspire young minds with creative freedom and vibrant designs.</p>
+        </div>
+    </div>
+  </section>
+
+  <section id="story" class="story">
+    <div>
+        <h2>Why It Meant the World to Me</h2>
+        <p>Ello was more than a toy—it was a companion in my creative adventures, helping me explore design, craft, and storytelling.</p>
+    </div>
+</section>
+
+  <section id="gallery" class="gallery">
+    <div>
+        <h2>Build Gallery (Interactive)</h2>
+        <div class="filters">
+        <button>Characters</button>
+        <button>Jewelry</button>
+        <button>Structures</button>
+        <button>Decor</button>
+        </div>
+        <div class="grid">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        </div>
+    </div>
+  </section>
+
+  <section class="makers">
+    <div>
+        <h2>The Makers of Magic</h2>
+        <div class="maker-cards">
+        <div class="maker">Manville</div>
+        <div class="maker">Stella Jung</div>
+        <div class="maker">Jim Mills-Winkler</div>
+        <div class="maker">Armen Danielian</div>
+        </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Ello Magic | Follow us for more creations</p>
+  </footer>
+
+</body>
+</html>
