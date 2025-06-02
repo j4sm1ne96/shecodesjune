@@ -16,7 +16,7 @@
     .hero {
         background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa9abe668-b7ea-41b5-be82-f4c0579fd96b_1152x755.jpeg");
         padding: 4rem;
-        height: 40vh;
+        height: 45vh;
         background-repeat: no-repeat;
         align-content: center;
     }
@@ -78,6 +78,96 @@
         gap: 2rem;
         align-items: center;
         flex-wrap: wrap;
+    }
+
+    * {box-sizing:border-box}
+
+    /* Slideshow container */
+    .slideshow-container {
+        max-width: 500px;
+        width: 40vw;
+        position: relative;
+        margin: auto;
+        height: 350px;
+        overflow: hidden;
+    }
+
+    /* Hide the images by default */
+    .mySlides {
+        display: none;
+    }
+
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+    }
+
+    /* Caption text */
+    .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+    background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
     }
 
     .about-image {
@@ -158,10 +248,42 @@
 
   <section class="about">
     <div>
-        <div class="about-image"></div>
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="https://service.mattel.com//us/img/prod/243/B0354_mr_02_1_l.jpg" style="width:100%">
+                <div class="text">Caption Text</div>
+            </div>
+        
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="https://i.pinimg.com/736x/56/c8/79/56c87958759091224b5703e51a5fe576.jpg" style="width:100%">
+                <div class="text">Caption Two</div>
+            </div>
+        
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="https://cdn.wallapop.com/images/10420/4a/2s/__/c10420p258791516/i585804178.jpg?pictureSize=W640" style="width:100%">
+                <div class="text">Caption Three</div>
+            </div>
+        
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <br>
+        
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+
         <div class="about-text">
-        <h2>What Was Ello?</h2>
-        <p>Ello was a craft-construction hybrid toy designed to inspire young minds with creative freedom and vibrant designs.</p>
+            <h2>What Was Ello?</h2>
+            <p>Ello was a craft-construction hybrid toy designed to inspire young minds with creative freedom and vibrant designs.</p>
         </div>
     </div>
   </section>
@@ -206,5 +328,35 @@
     <p>© 2025 Ello Magic | Follow us for more creations</p>
   </footer>
 
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+    showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+    showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+}
+  </script>
 </body>
 </html>
