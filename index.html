@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ello Magic</title>
   <style>
+
     body {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         margin: 0;
@@ -14,10 +15,11 @@
     }
 
     .hero {
-        background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa9abe668-b7ea-41b5-be82-f4c0579fd96b_1152x755.jpeg");
+        background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8)), url("https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa9abe668-b7ea-41b5-be82-f4c0579fd96b_1152x755.jpeg");
         padding: 4rem;
-        height: 45vh;
+        height: 60vh;
         background-repeat: no-repeat;
+        background-position-x: center;
         align-content: center;
     }
 
@@ -41,6 +43,7 @@
     .cta-buttons {
         gap: 20px;
         display: flex;
+        margin-top: 34px;
     }
 
     .cta-buttons .btn {
@@ -112,124 +115,251 @@
         user-select: none;
     }
 
-    /* Position the "next button" to the right */
     .next {
         right: 0;
         border-radius: 3px 0 0 3px;
     }
 
-    /* On hover, add a black background color with a little bit see-through */
     .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
+        background-color: rgba(0,0,0,0.8);
     }
 
-    /* Caption text */
     .text {
-    color: #f2f2f2;
-    font-size: 15px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
     }
 
-    /* Number text (1/3 etc) */
     .numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
     }
 
-    /* The dots/bullets/indicators */
     .dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
     }
 
     .active, .dot:hover {
-    background-color: #717171;
+        background-color: #717171;
     }
 
     /* Fading animation */
     .fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
     }
 
     @keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
+        from {opacity: .4}
+        to {opacity: 1}
     }
 
     .about-image {
-    flex: 1;
-    background: #ddd;
-    height: 200px;
+        flex: 1;
+        background: #ddd;
+        height: 200px;
     }
 
     .about-text {
-    flex: 2;
+        flex: 2;
     }
 
-    .filters {
-    display: flex;
-    gap: 1rem;
-    margin: 1rem 0;
+    .memory-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2rem;
+        justify-content: center;
     }
 
-    .filters button {
-    padding: 0.5rem 1rem;
-    background: #eee;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
+    .memory-card {
+        width: 240px;
+        height: 240px;
+        perspective: 1000px;
     }
 
-    .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    .memory-card .card-front,
+    .memory-card .card-back {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        position: absolute;
+        backface-visibility: hidden;
+        overflow: hidden;
+        transition: transform 0.6s;
+    }
+
+    .memory-card .card-front img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    .memory-card .card-back {
+        background: #ff69b4;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+        transform: rotateY(180deg);
+    }
+
+    .memory-card:hover .card-front {
+        transform: rotateY(180deg);
+    }
+
+    .memory-card:hover .card-back {
+        transform: rotateY(360deg);
     }
 
     .card {
-    background: #ddd;
-    height: 150px;
+        background: #ddd;
+        height: 150px;
     }
 
     .process ol {
-    list-style-position: inside;
-    padding-left: 1rem;
+        list-style-position: inside;
+        padding-left: 1rem;
     }
 
     .maker-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
     }
 
     .maker {
-    background: #ffe0f0;
-    padding: 1rem;
-    border-radius: 10px;
-    flex: 1;
-    min-width: 150px;
-    text-align: center;
+        background: #ffe0f0;
+        padding: 1rem;
+        border-radius: 10px;
+        flex: 1;
+        min-width: 150px;
+        text-align: center;
+    }
+
+    .maker:hover {
+        background: #ffc0dd;
+        transform: scale(1.05);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .close {
+        color: #aaa;
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+    }
+
+    .maker {
+        cursor: pointer;
+        transition: background 0.3s ease;
     }
 
     footer {
-    text-align: center;
-    background: #333;
-    color: white;
-    padding: 2rem 1rem;
+        text-align: center;
+        background: #333;
+        color: white;
+        padding: 2rem 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            padding: 2rem;
+            height: auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+        }
+
+        .hero .container {
+            padding: 0 1rem;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about > div {
+            flex-direction: column;
+        }
+
+        .slideshow-container {
+            width: 100%;
+            height: auto;
+        }
+
+        .maker-cards {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .maker {
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .memory-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .memory-card {
+            width: 90%;
+            height: 300px;
+        }
+
+        .modal-content {
+            width: 90%;
+            padding: 1.5rem;
+        }
     }
   </style>
 </head>
@@ -240,7 +370,7 @@
         <h1>Building Your Imagination with Ello</h1>
         <p>The building system that turned dreams into reality—one bead, panel, and sparkle at a time.</p>
         <div class="cta-buttons">
-        <a href="#gallery" class="btn">LEARN MORE</a>
+        <a href="#makers" class="btn">LEARN MORE</a>
         <a href="#story" class="btn outline">WHY IT MATTERED</a>
         </div>
     </div>
@@ -253,20 +383,17 @@
             <!-- Full-width images with number and caption text -->
             <div class="mySlides fade">
                 <div class="numbertext">1 / 3</div>
-                <img src="https://service.mattel.com//us/img/prod/243/B0354_mr_02_1_l.jpg" style="width:100%">
-                <div class="text">Caption Text</div>
+                <img src="https://i.pinimg.com/736x/56/c8/79/56c87958759091224b5703e51a5fe576.jpg" style="width:100%">
             </div>
         
             <div class="mySlides fade">
                 <div class="numbertext">2 / 3</div>
-                <img src="https://i.pinimg.com/736x/56/c8/79/56c87958759091224b5703e51a5fe576.jpg" style="width:100%">
-                <div class="text">Caption Two</div>
+                <img src="https://service.mattel.com//us/img/prod/243/B0354_mr_02_1_l.jpg" style="width:100%">
             </div>
         
             <div class="mySlides fade">
                 <div class="numbertext">3 / 3</div>
                 <img src="https://cdn.wallapop.com/images/10420/4a/2s/__/c10420p258791516/i585804178.jpg?pictureSize=W640" style="width:100%">
-                <div class="text">Caption Three</div>
             </div>
         
             <!-- Next and previous buttons -->
@@ -283,80 +410,120 @@
 
         <div class="about-text">
             <h2>What Was Ello?</h2>
-            <p>Ello was a craft-construction hybrid toy designed to inspire young minds with creative freedom and vibrant designs.</p>
+            <p>Ello was a craft-construction hybrid toy designed to inspire young minds with creative freedom and vibrant designs. The toys variety and potential combination of parts gave children an opportunity to create characters, jewelry, building structures, decorative accessories, or whatever they could imagine.</p>
         </div>
     </div>
   </section>
 
-  <section id="story" class="story">
-    <div>
-        <h2>Why It Meant the World to Me</h2>
-        <p>Ello was more than a toy—it was a companion in my creative adventures, helping me explore design, craft, and storytelling.</p>
-    </div>
-</section>
-
-  <section id="gallery" class="gallery">
-    <div>
-        <h2>Build Gallery (Interactive)</h2>
-        <div class="filters">
-        <button>Characters</button>
-        <button>Jewelry</button>
-        <button>Structures</button>
-        <button>Decor</button>
+    <section id="story" class="story">
+        <div>
+            <h2>Why It Meant the World to Me</h2>
+            <p>Ello was so much more than a toy, for the first time, rather than playing with dolls with pre-built cars, clothes and houses, Ello was an opportunity to let my creativity roam free. I was no longer restricted by somebody else's design restrictions. I have countless memories of my sister and I creating funky sculptures, weird and wacky vehicles and even jewellery out of Ello.</p>
         </div>
-        <div class="grid">
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+        <div class="memory-grid">
+            <div class="memory-card">
+              <div class="card-front">
+                <img src="https://preview.redd.it/ello-creation-system-deep-dive-v0-voilqcxw9lhb1.png?width=540&format=png&auto=webp&s=6417c3ca542455253e2a15eb285fb775e1331a11" alt="Ello car">
+              </div>
+              <div class="card-back">
+                <p>Funky race cars looked something like this!</p>
+              </div>
+            </div>
+            <div class="memory-card">
+              <div class="card-front">
+                <img src="https://i.pinimg.com/736x/e4/37/74/e43774f3c973d1ffc176b6160063742c.jpg" alt="Ello under the sea">
+              </div>
+              <div class="card-back">
+                <p>The undersea theme was definitely our favourite.</p>
+              </div>
+            </div>
+            <div class="memory-card">
+              <div class="card-front">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpfD0c2sRFZA4v_NFIW8oRZjdVXmE87AMr_g&s" alt="Ello accessories">
+              </div>
+              <div class="card-back">
+                <p>Fancy Ello outfits were possible with all the accessories.</p>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <section id="makers" class="makers">
+        <div>
+            <h2>The Makers of Magic</h2>
+            <div class="maker-cards">
+                <button class="maker" onclick="openModal('manville')">Manville</button>
+                <button class="maker" onclick="openModal('stella')">Stella Jung</button>
+                <button class="maker" onclick="openModal('jim')">Jim Mills-Winkler</button>
+                <button class="maker" onclick="openModal('armen')">Armen Danielian</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Jasmine Taylor - SheCodes June 2025 Challenge</p>
+    </footer>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+        showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+        showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+
+        const makerInfo = {
+            manville: "Manville was a lead product designer who pioneered the early design philosophy of Ello—form meets imagination.",
+            stella: "Stella Jung led the marketing push that brought Ello into the mainstream with bold, empowering branding.",
+            jim: "Jim Mills-Winkler handled the engineering that made Ello’s snap-fit system both fun and durable.",
+            armen: "Armen Danielian directed the visual styling and color palette that made Ello irresistibly bright and cheerful."
+        };
+
+        function openModal(key) {
+            document.getElementById("modal-text").textContent = makerInfo[key];
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById("modal");
+            if (event.target === modal) {
+            modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modal-text"></div>
         </div>
     </div>
-  </section>
-
-  <section class="makers">
-    <div>
-        <h2>The Makers of Magic</h2>
-        <div class="maker-cards">
-        <div class="maker">Manville</div>
-        <div class="maker">Stella Jung</div>
-        <div class="maker">Jim Mills-Winkler</div>
-        <div class="maker">Armen Danielian</div>
-        </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Ello Magic | Follow us for more creations</p>
-  </footer>
-
-  <script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
-
-    // Next/previous controls
-    function plusSlides(n) {
-    showSlides(slideIndex += n);
-    }
-
-    // Thumbnail image controls
-    function currentSlide(n) {
-    showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
-}
-  </script>
 </body>
 </html>
